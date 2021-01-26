@@ -236,43 +236,7 @@
     );
   }
 
-  /*
-  Generate an encryption key pair, then set up event listeners
-  on the "Encrypt" and "Decrypt" buttons.
-  */
- /*
-  window.crypto.subtle.generateKey(
-    {
-      name: "RSA-OAEP",
-      // Consider using a 4096-bit key for systems that require long-term security
-      modulusLength: 4096,
-      publicExponent: new Uint8Array([1, 0, 1]),
-      hash: "SHA-256",
-    },
-    true,
-    ["encrypt", "decrypt"]
-  ).then((keyPair) => {
-    const encryptButton = document.querySelector(".rsa-oaep .encrypt-button");
-    encryptButton.addEventListener("click", () => {
-      encryptMessage(keyPair.publicKey);
-      exportCryptoKey_Private(keyPair.privateKey);
-      exportCryptoKey_Public(keyPair.publicKey);
-    });
-
-    const decryptButton = document.querySelector(".rsa-oaep .decrypt-button");
-    decryptButton.addEventListener("click", () => {
-      const priv_key = document.querySelector("#rsa-oaep-message_enckey_priv")
-      pemEncodedKey = priv_key.value;
-
-
-      decriptkey = importPrivateKey(pemEncodedKey).then(function (value) { decryptMessage(value) });
-
-    });
-  });
-
-*/
-
-
+  
 
   window.addEventListener("paste", function (e) {
 
