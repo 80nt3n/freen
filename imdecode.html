@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>freenize</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="freen_favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <span class="page_title">freenize</span>
+  
+  <main>
+
+    <section class="examples">
+      <section class="encrypt-decrypt rsa-oaep">
+        <section class="encrypt-decrypt-controls">
+          <div class="message-control_key">
+            <i class="fa fa-key"></i><i class="fa fa-key"></i>
+            Paste Your key here
+            <i class="fa fa-caret-down"></i>
+            <textarea id="rsa-oaep-message_enckey_priv"></textarea>
+          </div>
+          <p>
+            <i class="fa fa-paste"></i>
+            <i class="fa fa-image"></i>
+            Paste Your greenized image here
+            <i class="fa fa-caret-down"></i>
+          </p>
+
+          <canvas style="border:1px solid grey;" id="mycanvas3" width="100" height="100">
+          </canvas>
+          <br>
+
+
+          <input class="decrypt-button" type="button" value="Freenize">
+
+          <div class="ciphertext"><span class="ciphertext-value"></span></div>
+          <i class="fa fa-envelope"></i>
+          <textarea id="ciphertext_box"></textarea>
+          <i class="fa fa-envelope-open-text"></i>
+          <div class="decrypted"><span class="decrypted-value"></span></div>
+          <i class="fa fa-unlock"></i>
+          Your freenized message
+          <i class="fa fa-caret-down"></i>
+          <textarea id="decryptedtext_box"></textarea>
+
+
+        </section>
+      </section>
+    </section>
+  </main>
+
+</body>
+<script src="imdecode.js"></script>
+
+</html>

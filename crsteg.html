@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>greenize</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="freen_favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<body>
+  <span class="page_title">greenize</span>
+  <main>
+
+    <section class="examples">
+      <section class="encrypt-decrypt rsa-oaep">
+        <section class="encrypt-decrypt-controls">
+          <div class="message-control">
+            <p>
+              <i class="fa fa-envelope-open"></i>Type your message here<br>
+            </p>
+            <textarea id="rsa-oaep-message">  </textarea>
+          </div>
+          <div class="message-control_key">
+            <p>
+              <i class="fa fa-key"></i>Your public key
+              <span style="position: sticky; left: 26%">
+                <i class="fa fa-key"></i><i class="fa fa-key"></i>Your private key
+              </span>
+            </p>
+
+            <textarea id="rsa-oaep-message_enckey_pub" style="width:49%"></textarea>
+            <textarea id="rsa-oaep-message_enckey_priv" style="width:49%"></textarea>
+            <p>
+              <input class="copy-pub-button" type="button" value="copy public key" onclick="copyPub()">
+              <input class="copy-priv-button" type="button" value="copy private key" style="position: sticky; left: 26%"
+                onclick="copyPriv()">
+            </p>
+          </div>
+          <p>
+            <i class="fa fa-envelope"></i>Your greenized message
+          </p>
+          <div class="ciphertext"><span class="ciphertext-value"></span></div>
+          <textarea id="ciphertext_box"></textarea>
+          <p>
+            <i class="fa fa-unlock"></i>Your freenized message
+          </p>
+          <div class="decrypted"><span class="decrypted-value"></span></div>
+          <textarea id="decryptedtext_box"></textarea>
+          <p>
+            <input class="encrypt-button" type="button" value="Encrypt">
+            <input class="decrypt-button" type="button" value="Decrypt">
+
+          </p>
+          <p>
+            <i class="fa fa-key"></i>
+            <i class="fa fa-image"></i>Your greenized image
+            <i class="fa fa-caret-down"></i>
+          </p>
+          <canvas style="border:1px solid grey;" id="myCanvas2" width="400" height="300">
+          </canvas>
+        </section>
+      </section>
+    </section>
+  </main>
+
+</body>
+<script>
+  function copyPub() {
+    var copyText = document.getElementById("rsa-oaep-message_enckey_pub");
+    console.log(copyText)
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+  }
+
+  function copyPriv() {
+    var copyText = document.getElementById("rsa-oaep-message_enckey_priv");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+  }
+
+</script>
+<script src="crsteg.js"></script>
+
+</html>

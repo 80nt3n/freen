@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web Crypto API crypt example</title>
+    <link rel="stylesheet" href="style.css">
+    <style> 
+      textarea {
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        resize: none;
+      }
+      </style>
+  </head>
+
+  <body>
+    <main>
+      <h1>Web Crypto: encrypt/decrypt</h1>
+
+      <section class="description">
+        <p>This page shows the use of the <code>encrypt()</code> and <code>decrypt()</code> functions of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API">Web Crypto API</a>. It contains four separate examples, one for each encryption algorithm supported:</p>
+         <li>"RSA-OAEP"</li>
+      </section>
+
+      <section class="examples">
+        <section class="encrypt-decrypt rsa-oaep">
+          <h2 class="encrypt-decrypt-heading">RSA-OAEP</h2>
+          <section class="encrypt-decrypt-controls">
+            <div class="message-control">
+              <label for="rsa-oaep-message">Enter a message to encrypt:</label>
+              <textarea id="rsa-oaep-message">  </textarea>
+            </div>
+            <div class="message-control_key">
+              <label for="rsa-oaep-message">The public encryption key is:</label>
+              <textarea id="rsa-oaep-message_enckey_pub"></textarea>
+              <label for="rsa-oaep-message">The private encryption key:</label>
+              <textarea id="rsa-oaep-message_enckey_priv"></textarea>     
+            </div>
+            <div class="ciphertext">Ciphertext:<span class="ciphertext-value"></span></div>
+            <textarea id="ciphertext_box"></textarea>
+            <div class="decrypted">Decrypted:<span class="decrypted-value"></span></div>
+            <textarea id="decryptedtext_box"></textarea>
+            <input class="encrypt-button" type="button" value="Encrypt">
+            <input class="decrypt-button" type="button" value="Decrypt">
+            <input class="generatekey-button" type="button" value="Generate key pair and encrypt">
+          </section>
+        </section>
+      </section>
+    </main>
+
+  </body>
+  <script src="rsa-oaep.js"></script>
+  
+</html>

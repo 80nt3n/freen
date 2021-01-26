@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<div id="mlink"></div>
+
+<body>
+    <h3>steganographed image</h3>
+    <canvas id="myCanvas" width="100" height="100">
+        Your browser does not support the HTML5 canvas tag.</canvas>
+
+    <h3>PNG converted</h3>
+    <a id="mdownload" href="mypict.png" download>
+        <img id="myImg" src="mypict.png" alt="The Pulpit Rock" width="100" height="100">
+    </a>
+    <h3>click image to download</h3>
+    <p>Image to use:</p>
+    <img id="scream" src="mypict.png" alt="The Scream" width="100" height="100">
+    <p><button onclick="loadPicture()">Load PNG</button></p>
+    <p>Canvas to fill:</p>
+    <canvas id="myCanvas2" width="100" height="100">
+    </canvas>
+
+</body>
+
+<script>
+
+
+
+    /* draw to canvas  -> steg*/
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    var i;
+    /* create steg image */
+    // base bcgrnd
+    for (k = 0; k < 100; k++) {
+        for (i = 0; i < 100; i++) {
+            color_string = "hsl(120," + k.toString() + "%,"+ i.toString() + "%)"
+            
+            //color_string = "hsl(120,50%,50%)"
+            //g = k + 10; b = i + 10
+            r=3+Math.floor(Math.random() * 80); //base64
+            g=180
+            b=r
+            color_string = "rgb" + "("+r.toString()+"," + g.toString() + "," + b.toString() + ")"
+            //color_string="rgb(204, 255, 179)"
+            ctx.fillStyle = color_string
+            ctx.fillRect(i, k, 1, 1);
+        }
+    }
+
+/* create steg image 
+    // create coded steg
+    for (k = 0; k < 10; k++) {
+        for (i = 0; i < 10; i++) {
+
+            color_string="rgb(0, 0, 0)"
+            ctx.fillStyle = color_string
+            ctx.fillRect( i, k, 1, 1);
+        }
+    }
+*/
+    let png = c.toDataURL();
+    let img_toarr = new Promise(function (myResolve, myReject) {
+            var imgData = ctx.getImageData(0, 0, 100, 100).data;
+            myResolve(imgData)
+        })
+
+        img_toarr.then(function (value) { 
+            const newArr = [];
+            var arr = value;
+            //console.log(arr.length)
+            //while(arr.length) newArr.push(arr.slice(0,3));
+            for( j=0; j<50; j++) {
+                console.log(arr.slice(19800+j*400,19800+j*400+4));}
+            
+            
+        
+        })
+    document.getElementById("myImg").src = png;
+    //document.getElementById("myImg").href = "mypict.png";
+
+    var a = document.createElement('a');
+    a.href = png;
+    a.download = "mypict.png";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    function loadPicture() {
+
+        var muint8
+        var canvas2 = document.getElementById("myCanvas2");
+        var ctx = canvas2.getContext("2d");
+        var img = document.getElementById("scream");
+        ctx.drawImage(img, 10, 10);
+        
+        
+        /*copy png from canvas to blob */
+        let canvas_toblob = new Promise(function (myResolve, myReject) {
+            canvas2.toBlob(function (mblob) { myResolve(mblob) })
+        });
+
+        // Must wait for a fulfilled Promise)
+        canvas_toblob.then(
+            function (value) {
+                myblob = value;
+                arrbuff_promise = myblob.arrayBuffer().then(function (value) {
+                    muint8 = new Uint8Array(value)
+                    return muint8
+                }
+
+                )
+                arrbuff_promise.then(function (value) {
+                    png_array = value
+                    console.log(png_array[1].toString(16))
+
+
+
+                })
+
+            })
+
+
+    }
+
+
+
+
+
+
+</script>
+
+
+</html>

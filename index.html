@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>freeneze</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="freen_favicon.png">
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        /* Set height of body and the document to 100% */
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial;
+            background-color: rgba(70, 180, 6, 0.794);
+        }
+
+        /* Style tab links */
+        .tablink {
+            background-color: rgb(32, 107, 2);
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 17px;
+            width: 25%;
+        }
+
+        .tablink:hover {
+            background-color: rgb(135, 236, 3);
+            color: rgb(4, 37, 146)
+        }
+
+        /* Style the tab content (and add height:100% for full page content) */
+        .tabcontent {
+            color: white;
+            display: none;
+            padding: 100px 20px;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        <img src="freen1000.png" alt="picture" width:auto height="120">
+    </div>
+    <button class="tablink" onclick="mopenPage('Greeneze','crsteg.html')"
+        onmouseover="mhoover(event, 'Greeneze')">Greenize</button>
+    <button class="tablink" onclick="mopenPage('Freeneze','imdecode.html')" onmouseover="mhoover(event, 'Freeneze')"
+        id="defaultOpen">Freenize</button>
+    <button class="tablink" onclick="mopenPage('Contact','contact.html','')"
+        onmouseover="mhoover(event, 'Contact')">Contact</button>
+    <button class="tablink" onclick="mopenPage('About','about.html')"
+        onmouseover="mhoover(event, 'About')">About</button>
+
+    <div id="Greeneze" class="tabcontent">
+        <h3>Greeneze</h3>
+        <p>You can make Your thought green</p>
+    </div>
+
+    <div id="Freeneze" class="tabcontent">
+        <h3>Freeneze</h3>
+        <p>You can make your thought free</p>
+        <i class="fa fa-smile-wink"></i>
+    </div>
+
+    <div id="Contact" class="tabcontent">
+        <h3>Contact</h3>
+        <p>freen@mail.freendom.com</p>
+    </div>
+
+    <div id="About" class="tabcontent">
+        <h3>About</h3>
+        <p>The Augmented Web Content</p>
+    </div>
+
+
+    <script>
+
+        function mhoover(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+
+        }
+
+        function mopenPage(pageName, link_name) {
+            var i, tabcontent
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            window.open(link_name, pageName)
+        }
+
+        function openPage(pageName, elmnt, color, link_name) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(pageName).style.display = "block";
+            elmnt.style.backgroundColor = color;
+            window.open(link_name, "mframe")
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+       // document.getElementById("defaultOpen").click();
+    </script>
+
+</body>
+
+</html>
